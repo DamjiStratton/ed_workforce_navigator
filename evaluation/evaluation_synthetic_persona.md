@@ -1,9 +1,7 @@
 # Synthetic Adversarial Evaluation Framework
 
 ## Objective
-Evaluation of my navigator model would be developed using synthetic persona (reference:). 
-
-The objective of this evaluation framework is to stress-test with edge cases the OBI-WAN agent against non-standard, ambiguous, and adversarial user input. This ensures the agent maintains strict adherence to the BigQuery graph data (O*NET and IPEDS) and prevents "hallucinated" career or academic advice.
+The objective of this evaluation framework is to stress-test with edge cases the OBI-WAN agent against non-standard, ambiguous, and adversarial user input. This ensures the agent maintains strict adherence to the BigQuery graph data (O*NET and IPEDS) and prevents "hallucinated" career or academic advice. Evaluation of my navigator model would be developed using synthetic persona (reference:    ).
 
 ## Stress-Test Persona Matrix
 
