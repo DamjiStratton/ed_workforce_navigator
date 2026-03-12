@@ -1,13 +1,13 @@
 # Synthetic Adversarial Evaluation Framework
 
 ## Objective
-Large Language Models (LLMs) are highly capable of generating fluent text, but in an educational and career-navigation context, **fluency without factual grounding is dangerous**. 
+Evaluation of my navigator model would be developed using synthetic persona (reference:) **. 
 
-The objective of this evaluation framework is to stress-test the OBI-WAN agent against non-standard, ambiguous, and adversarial user inputs. This ensures the agent maintains strict adherence to the BigQuery graph data (O*NET and IPEDS) and prevents "hallucinated" career or academic advice.
+The objective of this evaluation framework is to stress-test with edge cases the OBI-WAN agent against non-standard, ambiguous, and adversarial user input. This ensures the agent maintains strict adherence to the BigQuery graph data (O*NET and IPEDS) and prevents "hallucinated" career or academic advice.
 
 ## Stress-Test Persona Matrix
 
-To validate the deterministic routing of our custom BigQuery tools, the agent was evaluated against synthetic prompts representing four distinct "edge-case" user personas.
+To validate the deterministic routing of my custom BigQuery tools, the agent was evaluated against synthetic prompts representing four distinct "edge-case" user personas.
 
 | Persona | User Intent | Attack Vector / Edge Case | Expected Agent Behavior |
 | :--- | :--- | :--- | :--- |
@@ -29,3 +29,6 @@ Based on initial testing with the "Vague Career-Changer" persona, users frequent
 > *"If user says only 'certificate', you MUST ask: 'Undergraduate Certificate, Graduate Certificate, or Both?'"*
 
 By forcing the LLM to disambiguate before executing the SQL tool, we prevent malformed database queries and ensure high-fidelity institutional recommendations.
+
+Reference:
+
