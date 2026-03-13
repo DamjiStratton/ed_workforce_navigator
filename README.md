@@ -1,7 +1,36 @@
 # OBI-WAN: Occupation-Based Index for Workforce AI Navigator
 
 ## Overview
-OBI-WAN is a prototype AI-driven career and education navigator designed to solve the education-to-workforce transition in higher education settings. Unlike standard conversational agents that frequently hallucinate career advice, OBI-WAN operates on a deterministic graph architecture. It uses a Large Language Model strictly as a reasoning and routing engine to query real-world labor and education data (O*NET and IPEDS).
+OBI-WAN is a prototype AI-driven career and education navigator built to support education-to-workforce transitions in higher education. By integrating O*NET, IPEDS, semantic retrieval, and graph-based querying, it delivers explainable career and program guidance grounded in reliable structured data. Unlike conventional conversational agents that can hallucinate recommendations, OBI-WAN uses a large language model strictly as a reasoning and routing engine within a deterministic graph architecture over real-world labor and education data.
+
+## Motivation
+Education-to-career decisions are increasingly difficult to navigate. Learners often face fragmented information about occupations, skills, degree pathways, and institutions, while generic LLM systems can produce plausible but ungrounded advice. OBI-WAN is designed to support transparent, explainable pathway exploration through human-AI collaboration and structured data grounding. 
+
+## What OBI-WAN does
+- Resolves user goals into standardized occupation and program entities
+- Computes a context-adjusted AI applicability score for occupations
+- Retrieves aligned competencies (skills/abilities/knowledge), programs, and institutions through relational data joins
+- Supports multi-turn preference elicitation for missing parameters
+- Produces explanation-driven guidance grounded in structured data rather than free-form model memory
+
+## Why it is different
+OBI-WAN combines:
+- **Grounded retrieval:** semantic search + BigQuery graph traversal
+- **AI Applicability Score:** an occupation-level signal that helps users gauge how strongly a role may be complemented by AI.
+- **Human-AI collaboration:** multi-turn disambiguation and preference elicitation
+- **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests 
+
+## System overview
+OBI-WAN is a prototype AI-driven career and education navigator built to support education-to-workforce transitions in higher education. It integrates O*NET, IPEDS, semantic retrieval, and a node-and-edge schema implemented in BigQuery to generate explainable career and program guidance grounded in reliable labor and education data. Unlike conventional conversational agents that can hallucinate recommendations, OBI-WAN uses a large language model strictly as a reasoning and routing layer over structured relationships among jobs, competencies, programs, and higher educatation institutions.
+
+## Evaluation framework
+The goal is to stress-test the agent against ambiguous, adversarial, and non-standard inputs while preserving grounding and deterministic tool execution, by creating synthetic personas and inputting edge-case prompts.
+
+
+
+
+
+
 
 ## Technical Architecture & Stack
 * **LLM & Orchestration:** Gemini 2.5 Flash via the Google Agent Development Kit (ADK).
