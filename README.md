@@ -48,4 +48,4 @@ OBI-WAN is a proof-of-concept for grounded AI systems that support scalable, int
 - **Stateful interaction:** `ToolContext.state` preserves prior context across turns to support follow-up queries and missing-parameter clarification.
 
 ## Related Research
-A research draft describing the design and methodology of OBI-WAN is available here: *([INSERT LINK TO PDF OR DOCUMENT](https://drive.google.com/file/d/145SXYUiA1pEh_jDW2lt8lfMHa76u5j-m/view?usp=sharing])*
+A research draft describing the design and methodology of OBI-WAN is available here: *([(https://drive.google.com/file/d/145SXYUiA1pEh_jDW2lt8lfMHa76u5j-m/view?usp=sharing])*
