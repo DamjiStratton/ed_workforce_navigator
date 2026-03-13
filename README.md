@@ -23,4 +23,4 @@ The pedagogical design, system architecture, and applied statistical methodologi
 
 The research focuses on bridging learning analytics with workforce data, ensuring that AI tools in higher education prioritize real post-secondary education and labor market data based to ensure users' trust towards my model and prevent any potential hallucination. 
 
-*(Read the full conference paper abstract here - [INSERT LINK TO PDF OR DOCUMENT])*
+*(Read the full conference paper abstract here - [INSERT LINK TO PDF OR DOCUMENT](https://drive.google.com/file/d/145SXYUiA1pEh_jDW2lt8lfMHa76u5j-m/view?usp=sharing])*
