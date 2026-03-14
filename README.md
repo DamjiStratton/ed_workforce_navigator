@@ -3,13 +3,15 @@
 ## Overview
 OBI-WAN is a prototype AI-driven career and education navigator built to support education-to-workforce transitions in higher education. By integrating O*NET, IPEDS, semantic retrieval, and a node-and-edge schema implemented in BigQuery, it delivers explainable career and program guidance grounded in reliable labor and education data. Unlike conventional conversational agents that can hallucinate recommendations, OBI-WAN uses a large language model as a reasoning, dialogue-management, and tool-routing layer over structured relationships among occupations, competencies, programs, and institutions.
 
-## Motivation
+![OBI-WAN system architecture](assets/OBIWAN_System_Architecture03132026.png)
+
+## Why It Matters
 Education-to-career decisions are increasingly difficult to navigate. Learners often face fragmented information about occupations, skills, degree pathways, and institutions, while generic LLM systems can produce plausible but ungrounded advice. OBI-WAN is designed to support transparent, explainable pathway exploration through human-AI collaboration and structured data grounding. 
 
 ## What OBI-WAN Does
 - Resolves user goals into standardized occupation and program entities
 - Computes a context-adjusted AI applicability score for occupations
-- Retrieves aligned competencies (skills/abilities/knowledge), programs, and institutions through relational data joins
+- Retrieves aligned competencies, programs, and institutions through SQL joins across node-and-edge tables in BigQuery
 - Supports multi-turn preference elicitation for missing parameters
 - Produces explanation-driven guidance grounded in structured data rather than free-form model memory
 
@@ -20,10 +22,8 @@ OBI-WAN combines:
 - **Human-AI collaboration:** multi-turn disambiguation and preference elicitation
 - **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests
 
-## Why This Matters for Organizations
-OBI-WAN is a proof-of-concept for grounded AI systems that support scalable and explainable advising and pathway intelligence. The broader goal is to show how AI can function as a collaborative teammate in education-to-workforce decision support rather than an opaque recommendation engine. 
-
-## Potential Users
+## Potential Applications
+OBI-WAN is a proof-of-concept for grounded AI systems that support scalable, explainable advising and pathway intelligence. It is designed to show how AI can assist education-to-workforce decision-making through structured data retrieval, transparent reasoning, and human-AI collaboration rather than opaque recommendation generation.Potential Users are:
 - universities and academic advising teams
 - workforce development organizations
 - career navigation platforms
@@ -55,10 +55,13 @@ See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic
 
 ## Example Use Case
 User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
-OBI-WAN response: maps the query to relevant occupations and programs, retrieves aligned competencies, asks for missing filters such as modality or degree level, and returns grounded institution recommendations from structured IPEDS and O*NET data.
+OBI-WAN response: Maps the query to relevant occupations and programs, retrieves aligned competencies, asks for missing filters such as modality or degree level, and returns grounded institution recommendations from structured O*NET and IPEDS data.
 
 ## Related Research
 A research draft describing the design and methodology of OBI-WAN is available upon request.
 
 ## Current Status
-This repository contains the current prototype and an in-progress evaluation framework. Next steps include expanding the persona-based evaluation harness, analyzing failure patterns systematically, and conducting broader user-centered validation. For collaboration, please contact me at hdj514@gmail.com Thanks!
+This repository contains the current prototype and an in-progress evaluation framework. Next steps include expanding the persona-based evaluation harness, analyzing failure patterns systematically, and conducting broader user-centered validation.
+
+## Contact
+For collaboration or inquiries, contact hdj514@gmail.com
