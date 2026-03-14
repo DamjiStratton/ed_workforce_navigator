@@ -23,11 +23,13 @@ OBI-WAN combines:
 - **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests
 
 ## Potential Applications
-OBI-WAN is a proof-of-concept for grounded AI systems that support scalable, explainable advising and pathway intelligence. It is designed to show how AI can assist education-to-workforce decision-making through structured data retrieval, transparent reasoning, and human-AI collaboration rather than opaque recommendation generation.Potential Users are:
-- universities and academic advising teams
-- workforce development organizations
-- career navigation platforms
-- edtech and upskilling providers
+OBI-WAN is a proof-of-concept for grounded AI systems that support scalable, explainable advising and pathway intelligence. It is designed to show how AI can assist education-to-workforce decision-making through structured data retrieval, transparent reasoning, and human-AI collaboration rather than mere recommendation generation.
+
+Potential users include:
+- Universities and academic advising teams
+- Workforce development organizations
+- Career navigation platforms
+- Edtech and upskilling providers
 
 ## Evaluation Framework
 OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
