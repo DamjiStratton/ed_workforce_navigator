@@ -53,6 +53,24 @@ For each persona, evaluation should be run across multiple prompt variants rathe
 
 This allows the framework to measure not only whether the final answer is acceptable, but also whether the underlying tool-routing behavior is consistent with OBI-WAN’s design constraints.
 
+## Preliminary Results
+The current synthetic evaluation set includes 18 prompts across 6 edge-case personas (3 prompt variants per persona). Early results are summarized below.
+
+| Metric | Current Result | Notes |
+| :--- | :--- | :--- |
+| Grounding / Hallucination Rate | 0 observed hallucinated institutions/programs in current test set | Early synthetic results only |
+| Tool-Routing Reliability | 17/18 prompts behaved as intended | One early failure involved ambiguous certificate handling |
+| Parameter-Gating Compliance | Improved after prompt hardening | Certificate ambiguity was the main issue |
+| Scope Compliance | 100% on current out-of-scope prompts | Pizza/weather/movie prompts were correctly refused or redirected |
+| Transparency / Trust Response Quality | Generally strong | The agent explained reliance on O*NET and IPEDS without becoming defensive |
+
+## Failure → Fix → Outcome
+
+| Failure Mode | Example Prompt | Fix Applied | Outcome |
+| :--- | :--- | :--- | :--- |
+| Ambiguous certificate request triggered premature institution logic | "I want to get a certificate. What schools are good?" | Added explicit certificate disambiguation step before institution retrieval | Improved parameter-gating compliance and reduced premature tool use |
+
+
 ## System Prompt Hardening
 Initial testing with the **Vague Career-Changer** persona showed that users often use the term *certificate* ambiguously. To reduce malformed queries and improve recommendation fidelity, the prompt and tool logic were hardened to intercept this ambiguity before tool execution.
 
