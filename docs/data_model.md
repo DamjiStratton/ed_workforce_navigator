@@ -5,20 +5,17 @@ This document describes the node-and-edge schema implemented in BigQuery for OBI
 
 ## Relationship Overview
 
-```text
-[Competencies]
-      ↑
-job_requires_competencies_edge
-      ↑
-[Occupations] ← [AI Applicability Score]
-      ↑
-program_leads_to_job_edge
-      ↑
-[Programs]
-      ↑
-institution_offers_programs_edge
-      ↑
-[Institutions]
+graph TD
+    A[Competencies]
+    B[Occupations]
+    C[AI Applicability Score]
+    D[Programs]
+    E[Institutions]
+
+    B -- job_requires_competencies_edge --> A
+    C --> B
+    D -- program_leads_to_job_edge --> B
+    E -- institution_offers_programs_edge --> D
 
 ## Core Entities and Relationships
 
