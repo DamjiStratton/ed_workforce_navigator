@@ -31,9 +31,6 @@ See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic
 - `Evaluation/evaluation_synthetic_persona.md` — synthetic persona evaluation framework
 - `assets/obiwan-architecture.png` — architecture diagram
 
-## Current Status
-This repository contains the current prototype and an in-progress evaluation framework. Next steps include expanding the persona-based evaluation harness, analyzing failure patterns systematically, and conducting broader user-centered validation. For collaboration, please contact me at hdj514@gmail.com Thanks!
-
 ## Why This Matters for Organizations
 OBI-WAN is a proof-of-concept for grounded AI systems that support scalable and explainable advising and pathway intelligence. The broader goal is to show how AI can function as a collaborative teammate in education-to-workforce decision support rather than an opaque recommendation engine. 
 
@@ -45,16 +42,16 @@ OBI-WAN is a proof-of-concept for grounded AI systems that support scalable and 
 - **Stateful interaction:** `ToolContext.state` preserves prior context across turns to support follow-up queries and missing-parameter clarification.
 
 ## Retrieval Flow
-User query is embedded with Vertex AI.
-Semantic matching maps the query to SOC/CIP entities.
-BigQuery joins across node-and-edge tables retrieve occupations, competencies, programs, or institutions.
-Gemini formats results, asks clarifying questions when needed, and preserves context across turns.
+- User query is embedded with Vertex AI.
+- Semantic matching maps the query to SOC/CIP entities.
+- BigQuery joins across node-and-edge tables retrieve occupations, competencies, programs, or institutions.
+- Gemini formats results, asks clarifying questions when needed, and preserves context across turns.
 
 ## Potential Users
-universities and academic advising teams
-workforce development organizations
-career navigation platforms
-edtech and upskilling providers
+- universities and academic advising teams
+- workforce development organizations
+- career navigation platforms
+- edtech and upskilling providers
 
 ## Example Use Case
 User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
@@ -62,3 +59,6 @@ OBI-WAN response: maps the query to relevant occupations and programs, retrieves
 
 ## Related Research
 A research draft describing the design and methodology of OBI-WAN is available upon request.
+
+## Current Status
+This repository contains the current prototype and an in-progress evaluation framework. Next steps include expanding the persona-based evaluation harness, analyzing failure patterns systematically, and conducting broader user-centered validation. For collaboration, please contact me at hdj514@gmail.com Thanks!
