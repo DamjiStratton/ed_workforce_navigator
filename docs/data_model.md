@@ -17,6 +17,21 @@ graph TD
     D -- program_leads_to_job_edge --> B
     E -- institution_offers_programs_edge --> D
 
+
+
+
+```mermaid
+graph LR
+    A[Start] --> B{Error?};
+    B -->|Yes| C[Hmm...];
+    C --> D[Debug];
+    D --> B;
+    B ---->|No| E[Yay!];
+```
+
+
+
+
 ## Core Entities and Relationships
 
 | Table Name | Type | Description |
