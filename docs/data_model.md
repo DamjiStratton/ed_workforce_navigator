@@ -4,7 +4,19 @@
 This document describes the node-and-edge schema implemented in BigQuery for OBI-WAN. The data model connects occupations, competencies, academic programs, and institutions so that career and education recommendations can be grounded in structured O*NET and IPEDS data.
 
 ## Relationship Overview
-![OBI-WAN data model](../assets/obiwan-data-model.png)
+[Competencies]
+      ↑
+ job_requires_competencies
+      ↑
+[Occupations] ← AI Applicability Score
+      ↑
+ program_leads_to_job
+      ↑
+[Programs]
+      ↑
+ institution_offers_programs
+      ↑
+[Institutions]
 
 ## Core Entities and Relationships
 
