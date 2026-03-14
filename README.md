@@ -18,7 +18,16 @@ OBI-WAN combines:
 - **Grounded retrieval:** semantic search + SQL joins across node-and-edge tables in BigQuery
 - **AI Applicability Score:** an occupation-level signal that helps users gauge how strongly a role may be complemented by AI.
 - **Human-AI collaboration:** multi-turn disambiguation and preference elicitation
-- **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests 
+- **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests
+
+## Why This Matters for Organizations
+OBI-WAN is a proof-of-concept for grounded AI systems that support scalable and explainable advising and pathway intelligence. The broader goal is to show how AI can function as a collaborative teammate in education-to-workforce decision support rather than an opaque recommendation engine. 
+
+## Potential Users
+- universities and academic advising teams
+- workforce development organizations
+- career navigation platforms
+- edtech and upskilling providers
 
 ## Evaluation Framework
 OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
@@ -30,9 +39,6 @@ See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic
 - `notebooks/obiwan_navigator.ipynb` — prototype notebook
 - `Evaluation/evaluation_synthetic_persona.md` — synthetic persona evaluation framework
 - `assets/obiwan-architecture.png` — architecture diagram
-
-## Why This Matters for Organizations
-OBI-WAN is a proof-of-concept for grounded AI systems that support scalable and explainable advising and pathway intelligence. The broader goal is to show how AI can function as a collaborative teammate in education-to-workforce decision support rather than an opaque recommendation engine. 
 
 ## Technical Architecture
 - **LLM orchestration:** Gemini 2.5 Flash, via Google ADK, manages dialogue, clarification, and tool routing.
@@ -46,12 +52,6 @@ OBI-WAN is a proof-of-concept for grounded AI systems that support scalable and 
 - Semantic matching maps the query to SOC/CIP entities.
 - BigQuery joins across node-and-edge tables retrieve occupations, competencies, programs, or institutions.
 - Gemini formats results, asks clarifying questions when needed, and preserves context across turns.
-
-## Potential Users
-- universities and academic advising teams
-- workforce development organizations
-- career navigation platforms
-- edtech and upskilling providers
 
 ## Example Use Case
 User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
