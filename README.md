@@ -3,7 +3,7 @@
 ## Overview
 OBI-WAN is a prototype AI-driven career and education navigator built to support education-to-workforce transitions in higher education. By integrating O*NET, IPEDS, semantic retrieval, and a node-and-edge schema implemented in BigQuery, it delivers explainable career and program guidance grounded in reliable labor and education data. Unlike conventional conversational agents that can hallucinate recommendations, OBI-WAN uses a large language model as a reasoning, dialogue-management, and tool-routing layer over structured relationships among occupations, competencies, programs, and institutions.
 
-!(assets/OBIWAN_System_Architecture03132026.png)
+![OBI-WAN system architecture](assets/obiwan-system-architecture.png)
 
 ## Why It Matters
 Education-to-career decisions are increasingly difficult to navigate. Learners often face fragmented information about occupations, skills, degree pathways, and institutions, while generic LLM systems can produce plausible but ungrounded advice. OBI-WAN is designed to support transparent, explainable pathway exploration through human-AI collaboration and structured data grounding. 
@@ -36,12 +36,6 @@ OBI-WAN includes an in-progress evaluation framework designed to stress-test the
 
 See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic_persona.md) for the current version of framework.
 
-## Repository Structure
-- `README.md` — project overview
-- `notebooks/obiwan_navigator.ipynb` — prototype notebook
-- `Evaluation/evaluation_synthetic_persona.md` — synthetic persona evaluation framework
-- `assets/obiwan-architecture.png` — architecture diagram
-
 ## Technical Architecture
 - **LLM orchestration:** Gemini 2.5 Flash, via Google ADK, manages dialogue, clarification, and tool routing.
 - **Semantic retrieval:** Vertex AI (`text-embedding-004`) maps user queries to standardized occupation (SOC) and academic program (CIP) entities using vector similarity.
@@ -54,6 +48,12 @@ See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic
 - Semantic matching maps the query to SOC/CIP entities.
 - BigQuery joins across node-and-edge tables retrieve occupations, competencies, programs, or institutions.
 - Gemini formats results, asks clarifying questions when needed, and preserves context across turns.
+
+## Repository Structure
+- `README.md` — project overview
+- `notebooks/obiwan_navigator.ipynb` — prototype notebook
+- `Evaluation/evaluation_synthetic_persona.md` — synthetic persona evaluation framework
+- `assets/obiwan-architecture.png` — architecture diagram
 
 ## Example Use Case
 User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
