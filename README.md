@@ -21,7 +21,7 @@ OBI-WAN combines:
 - **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests 
 
 ## Evaluation Framework
-OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, deterministic tool execution, and resistance to hallucinated career or academic advice.
+OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
 
 See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic_persona.md) for the current version of framework.
 
@@ -43,6 +43,22 @@ OBI-WAN is a proof-of-concept for grounded AI systems that support scalable and 
 - **Structured data layer:** BigQuery stores a node-and-edge schema connecting occupations, competencies, academic programs, and institutions.
 - **Grounded recommendations:** OBI-WAN retrieves pathway-relevant information through SQL joins across node-and-edge tables, while the LLM formats and explains results rather than inventing domain facts.
 - **Stateful interaction:** `ToolContext.state` preserves prior context across turns to support follow-up queries and missing-parameter clarification.
+
+## Retrieval Flow
+User query is embedded with Vertex AI.
+Semantic matching maps the query to SOC/CIP entities.
+BigQuery joins across node-and-edge tables retrieve occupations, competencies, programs, or institutions.
+Gemini formats results, asks clarifying questions when needed, and preserves context across turns.
+
+## Potential Users
+universities and academic advising teams
+workforce development organizations
+career navigation platforms
+edtech and upskilling providers
+
+## Example Use Case
+User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
+OBI-WAN response: maps the query to relevant occupations and programs, retrieves aligned competencies, asks for missing filters such as modality or degree level, and returns grounded institution recommendations from structured IPEDS and O*NET data.
 
 ## Related Research
 A research draft describing the design and methodology of OBI-WAN is available upon request.
