@@ -34,11 +34,11 @@ Potential users include:
 ## Success Metrics
 OBI-WAN is designed to be evaluated not only on technical correctness, but also on decision-support value. Key product KPIs include:
 
-- **Pathway Clarification Rate:** how often vague user intent is narrowed into a concrete career or academic direction
-- **Actionable Recommendation Rate:** how often sessions end with a grounded next step
-- **Recommendation Helpfulness Score:** user-rated usefulness of the response
-- **Time to Useful Answer:** number of turns required before a grounded recommendation is produced
-- **Hallucination-Free Recommendation Rate:** percentage of sessions with no unsupported occupations, programs, or institutions in the final answer
+- **Pathway Clarification Rate:** % of vague-intent sessions that end with a narrowed career, program, or degree direction
+- **Actionable Recommendation Rate:** % of in-scope sessions that end with at least one grounded recommendation or clear next step
+- **Time to First Actionable Recommendation:** median number of assistant turns required before a grounded, useful recommendation is produced
+- **Helpfulness Score:** average user rating of response usefulness across rated sessions
+- **Hallucination-Free Recommendation Rate:** % of recommendation sessions with no unsupported occupations, programs, or institutions in the final answer
 
 ## Evaluation Framework
 OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
