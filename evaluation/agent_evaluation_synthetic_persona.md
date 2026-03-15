@@ -1,4 +1,4 @@
-# Evaluation Framework Using Synthetic Personas
+# Agent Evaluation Framework Using Synthetic Personas
 
 ## Objective
 This evaluation framework is designed to stress-test the OBI-WAN agent against ambiguous, adversarial, and non-standard user inputs. The goal is to assess whether the agent remains grounded in structured O*NET and IPEDS data stored in BigQuery, avoids hallucinated career or academic advice, and follows the intended tool-routing logic under edge-case conditions.
