@@ -85,6 +85,43 @@ To calculate these KPIs from synthetic persona evaluation, OBI-WAN should log th
 - `session_outcome` (`clarified_path`, `recommendation`, `redirected`, `no_result`)
 - `notes`
 
+## Scoring Method
+Current KPI values are calculated from manually reviewed synthetic persona sessions. Each session is scored using structured evaluation logs that capture:
+
+- whether the initial ambiguity was reduced
+- whether at least one grounded next step was provided
+- the assistant turn at which the first actionable recommendation appeared
+- whether any unsupported occupations, programs, or institutions appeared in the final answer
+
+These scores are currently treated as offline proxy measures rather than live product metrics.
+
+## Evaluation Sample
+The current KPI snapshot is based on:
+
+- **Total synthetic sessions evaluated:** [N]
+- **Vague-intent sessions:** [N]
+- **In-scope sessions:** [N]
+- **Recommendation-containing sessions:** [N]
+- **Evaluation mode:** Offline synthetic persona testing
+
+## Latest Offline KPI Results
+
+| KPI | Current Result | Denominator | Interpretation |
+| :--- | :--- | :--- | :--- |
+| **Proxy Pathway Clarification Rate** | [X%] | [x / y vague-intent sessions] | Indicates how often OBI-WAN helps narrow an initially vague request into a more concrete pathway |
+| **Actionable Recommendation Rate** | [X%] | [x / y in-scope sessions] | Indicates how often OBI-WAN ends with at least one grounded recommendation or clear next step |
+| **Time to First Actionable Recommendation** | [X turns] | [median across successful sessions] | Indicates how quickly OBI-WAN produces a grounded, useful next step |
+| **Hallucination-Free Recommendation Rate** | [X%] | [x / y recommendation sessions] | Indicates how often final recommendations remain fully traceable to structured data |
+
+## Interpretation
+These results suggest how well OBI-WAN performs under controlled synthetic evaluation conditions. At this stage, they should be interpreted as **offline proxy KPIs**, not as direct indicators of real-user satisfaction, trust, or adoption.
+
+The main value of this KPI snapshot is to show whether OBI-WAN is already demonstrating:
+- pathway clarification under ambiguity
+- grounded next-step recommendations
+- reasonable interaction efficiency
+- low hallucination risk in final outputs
+
 ## Interpretation Notes
 These KPIs are currently designed as **offline proxy measures** based on synthetic persona testing. They are useful for assessing whether OBI-WAN can generate grounded, actionable, and efficient decision-support behavior under controlled conditions.
 
