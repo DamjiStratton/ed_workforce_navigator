@@ -16,7 +16,7 @@ graph TD
     C --> B
     D -- program_leads_to_job_edge --> B
     E -- institution_offers_programs_edge --> D
-    B --> D
+    B -- occupation_mapped_to_program --> D
 ```
 
 
