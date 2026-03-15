@@ -32,14 +32,12 @@ Potential users include:
 - Edtech and upskilling providers
 
 ## Success Metrics
-OBI-WAN is designed to be evaluated not only on technical correctness, but also on decision-support value. Key product KPIs include:
+OBI-WAN is designed to be evaluated not only on technical correctness, but also on decision-support value. At the current stage, these are offline proxy KPIs measured through synthetic persona evaluation:
 
-- **Pathway Clarification Rate:** % of vague-intent sessions that end with a narrowed career, program, or degree direction
-- **Actionable Recommendation Rate:** % of in-scope sessions that end with at least one grounded recommendation or clear next step
+- **Proxy Pathway Clarification Rate:** % of vague-intent synthetic sessions that end with a narrowed career, program, or degree direction
+- **Actionable Recommendation Rate:** % of in-scope synthetic sessions that end with at least one grounded recommendation or clear next step
 - **Time to First Actionable Recommendation:** median number of assistant turns required before a grounded, useful recommendation is produced
-- **Helpfulness Score:** average user rating of response usefulness across rated sessions
-- **Hallucination-Free Recommendation Rate:** % of recommendation sessions with no unsupported occupations, programs, or institutions in the final answer
-
+- **Hallucination-Free Recommendation Rate:** % of synthetic recommendation sessions with no unsupported occupations, programs, or institutions in the final answer
 ## Evaluation Framework
 OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
 
