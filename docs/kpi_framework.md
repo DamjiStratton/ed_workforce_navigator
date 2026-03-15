@@ -1,31 +1,35 @@
 # OBI-WAN KPI Framework
 
 ## Purpose
-This document defines the core product KPIs for OBI-WAN. Unlike the agent evaluation framework, which focuses on system behavior and reliability under edge-case conditions, this KPI framework focuses on decision-support value, user usefulness, efficiency, and trust.
+This document defines the current product KPIs for OBI-WAN that can be measured through synthetic persona evaluation. At this stage, these KPIs should be interpreted as **offline proxy metrics** rather than live user metrics, because they are based on controlled synthetic test cases rather than real user interaction data.
+
+Unlike the agent evaluation framework, which focuses on system behavior under edge-case conditions, this KPI framework focuses on whether OBI-WAN produces useful, grounded, and decision-supportive outcomes.
+
+## Scope
+The current KPI framework is limited to metrics that are feasible to measure using synthetic persona prompts and structured evaluation logs.
 
 ## Core KPIs
 
 | KPI | Why It Matters | Definition / Calculation | Unit of Analysis | Audience |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pathway Clarification Rate** | Measures whether OBI-WAN helps users move from vague intent to a more concrete direction | **# vague-intent sessions ending with a narrowed occupation, program, or degree direction / # vague-intent sessions** | Session | CEO, Product |
-| **Actionable Recommendation Rate** | Measures whether the system produces usable next steps rather than only conversation | **# in-scope sessions ending with at least one grounded recommendation or clear next step / # in-scope sessions** | Session | CEO, CTO |
-| **Time to First Actionable Recommendation** | Measures interaction efficiency and how much friction users face before getting something useful | **Median assistant turns until the first grounded, actionable recommendation across successful sessions** | Session | CEO, CTO |
-| **Helpfulness Score** | Measures perceived user value of OBI-WAN’s recommendations | **Average user helpfulness rating across rated sessions**; optionally also track **% of ratings that are 4–5** | Session | CEO, Product |
-| **Hallucination-Free Recommendation Rate** | Measures trustworthiness and whether final recommendations remain grounded in structured data | **# recommendation sessions with zero unsupported occupations, programs, or institutions / # recommendation sessions** | Session | CEO, CTO |
+| **Proxy Pathway Clarification Rate** | Measures whether OBI-WAN helps move a vague starting query into a more concrete career or academic direction | **# vague-intent synthetic sessions ending with a narrowed occupation, program, or degree direction / # vague-intent synthetic sessions** | Session | CEO, Product |
+| **Actionable Recommendation Rate** | Measures whether the system produces usable next steps rather than only conversation | **# in-scope synthetic sessions ending with at least one grounded recommendation or clear next step / # in-scope synthetic sessions** | Session | CEO, CTO |
+| **Time to First Actionable Recommendation** | Measures interaction efficiency and how much friction occurs before the system produces something useful | **Median assistant turns until the first grounded, actionable recommendation across successful synthetic sessions** | Session | CEO, CTO |
+| **Hallucination-Free Recommendation Rate** | Measures trustworthiness and whether final recommendations remain grounded in structured data | **# synthetic recommendation sessions with zero unsupported occupations, programs, or institutions / # synthetic recommendation sessions** | Session | CEO, CTO |
 
 ## KPI Definitions
 
-### 1. Pathway Clarification Rate
-A session is counted as a **vague-intent session** if the user begins without a clearly specified occupation, academic program, or degree direction.
+### 1. Proxy Pathway Clarification Rate
+A session is counted as a **vague-intent synthetic session** if the initial prompt does not specify a clearly defined occupation, academic program, or degree direction.
 
-A session is counted as **clarified** if it ends with at least one of the following:
-- a narrowed occupation target
-- a narrowed academic program or major
-- a narrowed degree direction
+A session is counted as **clarified** if, by the end of the session, OBI-WAN narrows the pathway into at least one of the following:
+- a specific occupation target
+- a specific academic program or major
+- a specific degree direction
 - a grounded next-step pathway that meaningfully reduces ambiguity
 
 **Formula**  
-`Pathway Clarification Rate = clarified vague-intent sessions / vague-intent sessions`
+`Proxy Pathway Clarification Rate = clarified vague-intent synthetic sessions / vague-intent synthetic sessions`
 
 ### 2. Actionable Recommendation Rate
 A session is counted as **actionable** if it ends with at least one grounded, usable next step, such as:
@@ -35,70 +39,62 @@ A session is counted as **actionable** if it ends with at least one grounded, us
 - a recommended institution
 - a clear next-step clarification that enables grounded retrieval
 
-Only **in-scope sessions** should be included in the denominator.
+Only **in-scope synthetic sessions** should be included in the denominator.
 
 **Formula**  
-`Actionable Recommendation Rate = in-scope sessions with grounded recommendation or clear next step / in-scope sessions`
+`Actionable Recommendation Rate = in-scope synthetic sessions with grounded recommendation or clear next step / in-scope synthetic sessions`
 
 ### 3. Time to First Actionable Recommendation
-This measures how many assistant turns it takes before the user receives the first grounded, useful recommendation.
+This measures how many assistant turns it takes before OBI-WAN produces the first grounded, useful recommendation.
 
 A recommendation counts only if it is:
 - grounded in retrieved data
-- relevant to the user’s request
+- relevant to the prompt
 - more than a generic clarification or vague response
 
 Because this metric can be skewed by outliers, **median turns** is recommended instead of average.
 
 **Formula**  
-`Time to First Actionable Recommendation = median assistant turns until first actionable grounded recommendation across successful sessions`
+`Time to First Actionable Recommendation = median assistant turns until first actionable grounded recommendation across successful synthetic sessions`
 
-### 4. Helpfulness Score
-This measures how useful users perceive OBI-WAN’s responses to be.
-
-Recommended collection method:
-- prompt the user to rate the response on a **1–5 scale**
-- optionally collect a short free-text explanation
-
-**Formula**  
-`Helpfulness Score = average helpfulness rating across rated sessions`
-
-Optional supporting metric:  
-`Top-2-Box Helpfulness = # ratings of 4 or 5 / # rated sessions`
-
-### 5. Hallucination-Free Recommendation Rate
-This measures whether OBI-WAN’s final recommendations remain fully grounded in retrieved O*NET and IPEDS-backed data.
-
+### 4. Hallucination-Free Recommendation Rate
 A session counts as **hallucination-free** only if:
 - every returned occupation is traceable to retrieved structured data
 - every returned program is traceable to retrieved structured data
 - every returned institution is traceable to retrieved structured data
 - no unsupported pathway claims are introduced in the final answer
 
-Only sessions containing recommendations should be included in the denominator.
+Only synthetic sessions containing recommendations should be included in the denominator.
 
 **Formula**  
-`Hallucination-Free Recommendation Rate = recommendation sessions with zero unsupported entities / recommendation sessions`
+`Hallucination-Free Recommendation Rate = synthetic recommendation sessions with zero unsupported entities / synthetic recommendation sessions`
 
 ## Logging Requirements
-To calculate these KPIs, OBI-WAN should log the following fields for each session:
+To calculate these KPIs from synthetic persona evaluation, OBI-WAN should log the following fields for each session:
 
 - `session_id`
 - `turn_id`
-- `timestamp`
-- `user_prompt`
-- `initial_intent_type` (vague, specific, out_of_scope)
+- `persona_type`
+- `prompt_variant`
+- `initial_intent_type` (`vague`, `specific`, `out_of_scope`)
 - `tools_invoked`
 - `tool_parameters`
 - `grounded_entities_returned`
 - `unsupported_entities_flag`
 - `first_actionable_turn_number`
-- `session_outcome` (clarified_path, recommendation, redirected, no_result)
-- `helpfulness_rating`
+- `session_outcome` (`clarified_path`, `recommendation`, `redirected`, `no_result`)
+- `notes`
 
-Optional but helpful:
-- `trust_rating`
-- `free_text_feedback`
+## Interpretation Notes
+These KPIs are currently designed as **offline proxy measures** based on synthetic persona testing. They are useful for assessing whether OBI-WAN can generate grounded, actionable, and efficient decision-support behavior under controlled conditions.
 
-## Notes
-These KPIs are intended to measure **product value and user impact**, not only technical system performance. Technical correctness metrics such as tool-routing reliability, scope compliance, and parameter-gating compliance should remain in the separate agent evaluation framework.
+They should **not** yet be interpreted as direct measures of real user satisfaction, trust, or adoption. Those metrics require a future user-facing demo and real interaction data.
+
+## Future KPI Expansion
+Once OBI-WAN is deployed in a lightweight demo app with real users, the KPI framework can be expanded to include:
+
+- user-rated helpfulness
+- trust score
+- repeat usage / retention
+- clarification burden from real sessions
+- completion of real-world next-step actions
