@@ -91,7 +91,7 @@ These KPIs are currently designed as **offline proxy measures** based on synthet
 They should **not** yet be interpreted as direct measures of real user satisfaction, trust, or adoption. Those metrics require a future user-facing demo and real interaction data.
 
 ## Future KPI Expansion
-Once OBI-WAN is deployed in a lightweight demo app with real users, the KPI framework can be expanded to include:
+Once OBI-WAN is deployed in a demo app with real users, the KPI framework can be expanded to include:
 
 - user-rated helpfulness
 - trust score
