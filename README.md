@@ -1,5 +1,9 @@
 # OBI-WAN: Occupation-Based Index for Workforce AI Navigator
 
+## Demo
+A short demo of OBI-WAN is available on LinkedIn. The walkthrough shows how the system moves from an ambiguous career question to grounded skill, program, and institution recommendations through multi-turn clarification and structured retrieval.
+
+
 ## Overview
 OBI-WAN is a prototype AI-driven career and education navigator built to support education-to-workforce transitions in higher education. By integrating O*NET, IPEDS, semantic retrieval, and a node-and-edge schema implemented in BigQuery, it delivers explainable career and program guidance grounded in reliable labor and education data. Unlike conventional conversational agents that can hallucinate recommendations, OBI-WAN uses a large language model as a reasoning, dialogue-management, and tool-routing layer over structured relationships among occupations, competencies, programs, and institutions.
 
@@ -15,33 +19,29 @@ Education-to-career decisions are increasingly difficult to navigate. Learners o
 - Supports multi-turn preference elicitation for missing parameters
 - Produces explanation-driven guidance grounded in structured data rather than free-form model memory
 
-## Why It Is Different
-OBI-WAN combines:
-- **Grounded retrieval:** semantic search + SQL joins across node-and-edge tables in BigQuery
-- **AI Applicability Score:** an occupation-level signal that helps users gauge how strongly a role may be complemented by AI.
-- **Human-AI collaboration:** multi-turn disambiguation and preference elicitation
-- **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests
+## Example Use Case
+User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
+OBI-WAN response: Maps the query to relevant occupations and programs, retrieves aligned competencies, asks for missing filters such as modality or degree level, and returns grounded institution recommendations from structured O*NET and IPEDS data.
 
-## Potential Applications
-OBI-WAN is a proof-of-concept for grounded AI systems that support scalable, explainable advising and pathway intelligence. It is designed to show how AI can assist education-to-workforce decision-making through structured data retrieval, transparent reasoning, and human-AI collaboration rather than mere recommendation generation.
+## Quick Start
+### Requirements
+- Python 3.10+
+- Google Cloud project with access to BigQuery and Vertex AI
+- Required Python packages listed in `requirements.txt`
 
-Potential users include:
-- Universities and academic advising teams
-- Workforce development organizations
-- Career navigation platforms
-- Edtech and upskilling providers
+### Setup
+1. Clone this repository.
+2. Install dependencies.
+3. Configure Google Cloud authentication.
+4. Update environment variables for project ID, region, and table names.
+5. Run `notebooks/obiwan_navigator.ipynb` to explore the prototype workflow.
 
-## Success Metrics
-OBI-WAN is designed to be evaluated not only on technical correctness, but also on decision-support value. At the current stage, these are offline proxy KPIs measured through synthetic persona evaluation:
+## Data Sources
+OBI-WAN currently integrates structured public data sources including:
+- **O*NET** for occupations, competencies, and work-relevant attributes
+- **IPEDS** for academic programs and institution-level offerings
 
-- **Proxy Pathway Clarification Rate:** % of vague-intent synthetic sessions that end with a narrowed career, program, or degree direction
-- **Actionable Recommendation Rate:** % of in-scope synthetic sessions that end with at least one grounded recommendation or clear next step
-- **Time to First Actionable Recommendation:** median number of assistant turns required before a grounded, useful recommendation is produced
-- **Hallucination-Free Recommendation Rate:** % of synthetic recommendation sessions with no unsupported occupations, programs, or institutions in the final answer
-## Evaluation Framework
-OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
-
-See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic_persona.md) for the current version of framework.
+These sources are used to ground recommendations in structured labor-market and education data rather than free-form model memory.
 
 ## Technical Architecture
 - **LLM orchestration:** Gemini 2.5 Flash, via Google ADK, manages dialogue, clarification, and tool routing.
@@ -56,21 +56,52 @@ See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic
 - BigQuery joins across node-and-edge tables retrieve occupations, competencies, programs, or institutions.
 - Gemini formats results, asks clarifying questions when needed, and preserves context across turns.
 
+## Why It Is Different
+OBI-WAN combines:
+- **Grounded retrieval:** semantic search + SQL joins across node-and-edge tables in BigQuery
+- **AI Applicability Score:** an occupation-level signal that helps users gauge how strongly a role may be complemented by AI.
+- **Human-AI collaboration:** multi-turn disambiguation and preference elicitation
+- **Trust-oriented evaluation framework:** synthetic persona stress-testing for ambiguity, adversarial prompts, and impossible requests
+
+## Potential Applications
+OBI-WAN is a proof-of-concept for grounded AI systems that support education-to-workforce decision-making through structured retrieval, transparent reasoning, and human-AI collaboration.
+Potential users include:
+- Universities and academic advising teams
+- Workforce development organizations
+- Career navigation platforms
+- Edtech and upskilling providers
+
 ## Repository Structure
 - `README.md` — project overview
 - `notebooks/obiwan_navigator.ipynb` — prototype notebook
 - `Evaluation/evaluation_synthetic_persona.md` — synthetic persona evaluation framework
-- `assets/obiwan-architecture.png` — architecture diagram
-
-## Example Use Case
-User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
-OBI-WAN response: Maps the query to relevant occupations and programs, retrieves aligned competencies, asks for missing filters such as modality or degree level, and returns grounded institution recommendations from structured O*NET and IPEDS data.
-
-## Related Research
-A research draft describing the design and methodology of OBI-WAN is available upon request.
+- `assets/OBIWAN_System_Architecture03132026.png` — architecture diagram
 
 ## Current Status
 This repository contains the current prototype and an in-progress evaluation framework. Next steps include expanding the persona-based evaluation harness, analyzing failure patterns systematically, and conducting broader user-centered validation.
 
+## Success Metrics
+OBI-WAN is designed to be evaluated not only on technical correctness, but also on decision-support value. At the current stage, these are offline proxy KPIs measured through synthetic persona evaluation:
+
+- **Proxy Pathway Clarification Rate:** % of vague-intent synthetic sessions that end with a narrowed career, program, or degree direction
+- **Actionable Recommendation Rate:** % of in-scope synthetic sessions that end with at least one grounded recommendation or clear next step
+- **Time to First Actionable Recommendation:** median number of assistant turns required before a grounded, useful recommendation is produced
+- **Hallucination-Free Recommendation Rate:** % of synthetic recommendation sessions with no unsupported occupations, programs, or institutions in the final answer
+
+## Evaluation Framework
+OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
+
+See [Evaluation/evaluation_synthetic_persona.md](Evaluation/evaluation_synthetic_persona.md) for the current version of framework.
+
+## Limitations
+- This repository contains a prototype and research-oriented proof of concept, not a production advising system.
+- Current evaluation is based on synthetic persona stress-testing rather than live user studies.
+- Recommendations depend on the scope and coverage of the integrated datasets.
+- OBI-WAN is intended to support exploration and decision-making, not replace academic advising or professional career counseling.
+
+## Related Research
+A research paper describing the design and methodology of OBI-WAN is currently under review. I plan to share more after the conference decision. If you are interested in the project or would like to discuss the work, feel free to reach out by email.
+
 ## Contact
-For collaboration or inquiries, contact hdj514@gmail.com
+- Email: [hdj514@gmail.com](mailto:hdj514@gmail.com)
+- LinkedIn: [Damji Stratton](https://www.linkedin.com/in//damji-stratton/?trk=opento_sprofile_details)
