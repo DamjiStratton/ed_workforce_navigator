@@ -58,17 +58,22 @@ The current synthetic evaluation set includes 18 prompts across 6 edge-case pers
 
 | Metric | Current Result | Notes |
 | :--- | :--- | :--- |
-| Grounding / Hallucination Rate | 0 observed hallucinated institutions/programs in current test set | Early synthetic results only |
+| Grounding / Hallucination Rate | No observed hallucinated institutions or programs in the initial synthetic test set | A later follow-up test revealed a grounding failure in generic job-title disambiguation | Early synthetic results only |
 | Tool-Routing Reliability | 17/18 prompts behaved as intended | One early failure involved ambiguous certificate handling |
 | Parameter-Gating Compliance | Improved after prompt hardening | Certificate ambiguity was the main issue |
 | Scope Compliance | 100% on current out-of-scope prompts | Pizza/weather/movie prompts were correctly refused or redirected |
 | Transparency / Trust Response Quality | Generally strong | The agent explained reliance on O*NET and IPEDS without becoming defensive |
+
+A later synthetic test exposed a grounding failure in generic job-title handling. In the prompt *"What skills are needed for a data analyst?"*, the agent incorrectly matched **data analyst** to **Survey Researchers** through the `Reported_job_titles_293` alias registry. This occurred because the system prioritized reported-title lookup before vector fallback, which improved recall but reduced precision for broad occupational labels.
+
+To address this, the agent was updated to detect ambiguous generic job titles and avoid forcing a single occupation match. Instead, it now asks the user to clarify the intended occupation before returning a competency list. This change was designed to reduce unsupported occupation mapping and improve grounding for job-skill queries.
 
 ## Failure → Fix → Outcome
 
 | Failure Mode | Example Prompt | Fix Applied | Outcome |
 | :--- | :--- | :--- | :--- |
 | Ambiguous certificate request triggered premature institution logic | "I want to get a certificate. What schools are good?" | Added explicit certificate disambiguation step before institution retrieval | Improved parameter-gating compliance and reduced premature tool use |
+| Generic job-title alias matching overrode semantic role intent | "What skills are needed for a data analyst?" | Added ambiguity detection for generic job titles and changed the agent behavior from forced alias resolution to clarification-first disambiguation | In the post-fix run, the agent no longer forced an incorrect occupation match and instead requested clarification |
 
 
 ## System Prompt Hardening
@@ -78,5 +83,15 @@ Initial testing with the **Vague Career-Changer** persona showed that users ofte
 
 This clarification step prevents premature institution retrieval and improves parameter-gating compliance for downstream BigQuery queries.
 
+## Job-Title Disambiguation Hardening
+Subsequent testing revealed that broad occupational labels such as *data analyst* can map to multiple occupations and should not be treated as uniquely identifiable titles. In one test case, the system matched *data analyst* to **Survey Researchers** because that label appeared in the reported-title alias field. Although the returned competencies were grounded to a real occupation, the response was not grounded to the user's intended role.
+
+To reduce this failure mode, the agent was updated to detect ambiguous generic job titles and ask a clarification question instead of silently forcing a single occupation match. This shifts the behavior from high-recall alias matching toward clarification-first grounding when the user query is underspecified.
+
 ## Current Status
-This evaluation framework is still in progress. The current version defines the core persona matrix, prompt variants, expected tool behavior, and evaluation metrics. Next steps include expanding prompt coverage, formalizing pass/fail scoring, and logging tool-level outcomes systematically across test runs.
+This evaluation framework is still in progress. The current version defines the core persona matrix, prompt variants, expected tool behavior, and evaluation metrics. Early testing identified two important hardening needs:
+
+1. certificate ambiguity before institution retrieval
+2. generic job-title ambiguity before competency retrieval
+
+Both issues have now been incorporated into the current agent logic through clarification-first handling and more conservative retrieval behavior. Next steps include rerunning the full synthetic test set on the updated version, formalizing pass/fail scoring, and logging pre-fix versus post-fix outcomes systematically across test runs.
