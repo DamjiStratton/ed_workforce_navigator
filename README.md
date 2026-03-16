@@ -24,6 +24,8 @@ User question: “I’m interested in mental health counseling. What skills do I
 OBI-WAN response: Maps the query to relevant occupations and programs, retrieves aligned competencies, asks follow-up questions such as modality or degree level, and returns grounded institution recommendations from structured O*NET and IPEDS data.
 
 ## Quick Start
+> Note: The current prototype depends on Google Cloud configuration and BigQuery-hosted data assets that are not fully public. This repository is currently shared as a research and portfolio prototype documenting the system design, retrieval workflow, and evaluation approach.
+
 ### Requirements
 - Python 3.10+
 - Google Cloud project with access to BigQuery and Vertex AI
