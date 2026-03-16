@@ -72,8 +72,8 @@ To address this, the agent was updated to detect ambiguous generic job titles an
 
 | Failure Mode | Example Prompt | Fix Applied | Outcome |
 | :--- | :--- | :--- | :--- |
-| Ambiguous certificate request triggered premature institution logic | "I want to get a certificate. What schools are good?" | Added explicit certificate disambiguation step before institution retrieval | Improved parameter-gating compliance and reduced premature tool use |
-| Generic job-title alias matching overrode semantic role intent | "What skills are needed for a data analyst?" | Added ambiguity detection for generic job titles and changed the agent behavior from forced alias resolution to clarification-first disambiguation | In the post-fix run, the agent no longer forced an incorrect occupation match and instead requested clarification |
+| Ambiguous certificate request triggered premature institution logic | "I want to get a certificate. What schools are good?" | Added an explicit certificate disambiguation step before institution retrieval | Reduced premature institution retrieval and improved parameter-gating compliance |
+| Generic job-title resolution was either too rigid or too clarification-heavy | "What skills are needed for a data analyst?" | Replaced clarification-first handling with confidence-based semantic matching, using direct grounded occupation resolution when confidence is strong and clarification only when top matches are genuinely close | Improved usability by reducing unnecessary clarification while preserving grounded occupation matching for ambiguous role queries |
 
 
 ## System Prompt Hardening
