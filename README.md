@@ -1,7 +1,7 @@
 # OBI-WAN: Occupation-Based Index for Workforce AI Navigator
 
 ## Demo
-A short demo of OBI-WAN is available on LinkedIn. The walkthrough shows how the system moves from an ambiguous career question to grounded skill, program, and institution recommendations through multi-turn clarification and structured retrieval.
+A short demo of OBI-WAN is being shared on LinkedIn. The walkthrough shows how the system moves from an ambiguous career question to grounded skill, program, and institution recommendations through multi-turn clarification and structured retrieval.
 
 
 ## Overview
@@ -10,7 +10,7 @@ OBI-WAN is a prototype AI-driven career and education navigator built to support
 ![OBI-WAN system architecture](assets/OBIWAN_System_Architecture03132026.png)
 
 ## Why It Matters
-Education-to-career decisions are increasingly difficult to navigate. Learners often face fragmented information about occupations, skills, degree pathways, and institutions, while generic LLM systems can produce plausible but ungrounded advice. OBI-WAN is designed to support transparent, explainable pathway exploration through human-AI collaboration and structured data grounding. 
+Education-to-workforce decisions are increasingly difficult to navigate. Learners often face fragmented information about occupations, skills, degree pathways, and institutions, while generic LLM systems can produce plausible but ungrounded advice. OBI-WAN is designed to support transparent, explainable pathway exploration through human-AI collaboration and structured data grounding. 
 
 ## What OBI-WAN Does
 - Resolves user goals into standardized occupation and program entities
@@ -21,7 +21,7 @@ Education-to-career decisions are increasingly difficult to navigate. Learners o
 
 ## Example Use Case
 User question: “I’m interested in mental health counseling. What skills do I need, and which online master’s programs might fit?”
-OBI-WAN response: Maps the query to relevant occupations and programs, retrieves aligned competencies, asks for missing filters such as modality or degree level, and returns grounded institution recommendations from structured O*NET and IPEDS data.
+OBI-WAN response: Maps the query to relevant occupations and programs, retrieves aligned competencies, asks follow-up questions such as modality or degree level, and returns grounded institution recommendations from structured O*NET and IPEDS data.
 
 ## Quick Start
 ### Requirements
@@ -65,6 +65,7 @@ OBI-WAN combines:
 
 ## Potential Applications
 OBI-WAN is a proof-of-concept for grounded AI systems that support education-to-workforce decision-making through structured retrieval, transparent reasoning, and human-AI collaboration.
+
 Potential users include:
 - Universities and academic advising teams
 - Workforce development organizations
@@ -104,4 +105,4 @@ A research paper describing the design and methodology of OBI-WAN is currently u
 
 ## Contact
 - Email: [hdj514@gmail.com](mailto:hdj514@gmail.com)
-- LinkedIn: [Damji Stratton](https://www.linkedin.com/in//damji-stratton/?trk=opento_sprofile_details)
+- LinkedIn: [Damji Stratton](https://www.linkedin.com/in//damji-stratton/)
