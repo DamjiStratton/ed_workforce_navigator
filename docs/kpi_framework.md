@@ -17,7 +17,7 @@ The current KPI framework is limited to metrics that are feasible to measure usi
 | **Proxy Pathway Clarification Rate** | Measures whether OBI-WAN helps move a vague starting query into a more concrete career or academic direction | **# vague-intent synthetic sessions ending with a narrowed occupation, program, or degree direction / # vague-intent synthetic sessions** | Session | CEO, Product Lead, Research Lead |
 | **Actionable Recommendation Rate** | Measures whether the system produces usable next steps rather than only conversation | **# in-scope synthetic sessions ending with at least one grounded recommendation or clear next step / # in-scope synthetic sessions** | Session | CEO, CTO, Product Lead |
 | **Time to First Actionable Recommendation** | Measures interaction efficiency and how much friction occurs before the system produces something useful | **Median assistant turns until the first grounded, actionable recommendation across successful synthetic sessions** | Session | CEO, CTO, Product Lead |
-| **Hallucination-Free Recommendation Rate** | Measures trustworthiness and whether final recommendations remain grounded in structured data | **# synthetic recommendation sessions with zero unsupported occupations, programs, or institutions / # synthetic recommendation sessions** | Session | CEO, CTO, Research Lead |
+| **Hallucination-Free Recommendation Rate** | Measures trustworthiness and whether final recommendations remain grounded in structured data | **# synthetic recommendation sessions with zero unsupported occupations, programs, or institutions / # synthetic recommendation sessions** | Session | CEO, CTO, Product Lead, Research Lead |
 
 ## KPI Definitions
 
