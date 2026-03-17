@@ -91,6 +91,8 @@ OBI-WAN is designed to be evaluated not only on technical correctness, but also 
 - **Time to First Actionable Recommendation:** median number of assistant turns required before a grounded, useful recommendation is produced
 - **Hallucination-Free Recommendation Rate:** % of synthetic recommendation sessions with no unsupported occupations, programs, or institutions in the final answer
 
+See [docs/kpi_framework.md](docs/kpi_framework.md) for the current version of KPI metrics.
+
 ## Evaluation Framework
 OBI-WAN includes an in-progress evaluation framework designed to stress-test the agent against ambiguous, adversarial, and non-standard inputs. The current approach uses synthetic personas and edge-case prompts to assess grounding, tool-routing reliability, and resistance to hallucinated career or academic advice.
 
