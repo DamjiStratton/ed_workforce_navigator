@@ -16,7 +16,7 @@ The current KPI framework is limited to metrics that are feasible to measure usi
 | :--- | :--- | :--- | :--- | :--- |
 | **Proxy Pathway Clarification Rate** | Measures whether OBI-WAN helps move a vague starting query into a more concrete career or academic direction | **# vague-intent synthetic sessions ending with a narrowed occupation, program, or degree direction / # vague-intent synthetic sessions** | Session | Product Lead, Research Lead, Stakeholders |
 | **Actionable Recommendation Rate** | Measures whether the system produces usable next steps rather than only conversation | **# in-scope synthetic sessions ending with at least one grounded recommendation or clear next step / # in-scope synthetic sessions** | Session | Product Lead, Research Lead, Stakeholders |
-| **Time to First Actionable Recommendation** | Measures interaction efficiency and how much friction occurs before the system produces something useful | **Median assistant turns until the first grounded, actionable next step across successful synthetic sessions** | Session | Product Lead, Research Lead |
+| **Time to First Actionable Recommendation** | Measures interaction efficiency and how much friction occurs before the system produces something useful | **Median assistant turns until the first grounded, actionable next step across sessions where OBI-WAN produced an actionable next step** | Session | Product Lead, Research Lead |
 | **Hallucination-Free Recommendation Rate** | Measures trustworthiness and whether recommendation outputs remain grounded in structured data | **# synthetic recommendation sessions with zero unsupported occupations, programs, or institutions / # synthetic recommendation sessions** | Session | Product Lead, Research Lead, Stakeholders |
 
 ## KPI Definitions
@@ -55,8 +55,10 @@ An actionable step counts if it is:
 
 Because this metric can be skewed by outliers, **median turns** is used instead of average.
 
+This metric should be calculated only across sessions where OBI-WAN produced an actionable next step.
+
 **Formula**  
-`Time to First Actionable Recommendation = median assistant turns until first actionable next step across successful synthetic sessions`
+`Time to First Actionable Recommendation = median assistant turns until first actionable next step across sessions where OBI-WAN produced an actionable next step`
 
 ### 4. Hallucination-Free Recommendation Rate
 A session counts as **hallucination-free** only if:
@@ -116,7 +118,7 @@ The current KPI snapshot is based on **6 synthetic sessions** evaluated in **off
 - **Vague-intent sessions:** `2`
 - **In-scope sessions:** `4`
 - **Recommendation sessions:** `1`
-- **Successful actionable sessions used for median-turn calculation:** `3`
+- **Sessions where OBI-WAN produced an actionable next step:** `3`
 - **Evaluation mode:** Offline synthetic persona testing
 
 ## Latest Offline KPI Results
@@ -125,7 +127,7 @@ The current KPI snapshot is based on **6 synthetic sessions** evaluated in **off
 | :--- | :--- | :--- | :--- | :--- |
 | **Proxy Pathway Clarification Rate** | **100%** | **2 of 2** | 2 vague-intent sessions | Indicates how often OBI-WAN helps narrow an initially vague request into a more concrete pathway |
 | **Actionable Recommendation Rate** | **75%** | **3 of 4** | 4 in-scope sessions | Indicates how often OBI-WAN ends with at least one grounded recommendation or clear next step |
-| **Time to First Actionable Recommendation** | **1.0 turns (median)** | **3 sessions** | 3 successful actionable sessions | Indicates how quickly OBI-WAN produces a grounded, useful next step |
+| **Time to First Actionable Recommendation** | **1.0 turns (median)** | **3 sessions** | 3 sessions where OBI-WAN produced an actionable next step | Indicates how quickly OBI-WAN produces a grounded, useful next step |
 | **Hallucination-Free Recommendation Rate** | **100%** | **1 of 1** | 1 recommendation session | Indicates how often recommendation outputs remain fully traceable to structured data and supporting text evidence |
 
 ## Interpretation
