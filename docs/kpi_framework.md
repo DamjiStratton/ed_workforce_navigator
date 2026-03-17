@@ -110,7 +110,7 @@ Each session is scored for:
 These scores are currently treated as **offline proxy measures** rather than live product metrics.
 
 ## Evaluation Sample
-The current KPI snapshot is based on:
+The current KPI snapshot is based on **6 synthetic sessions** evaluated in **offline synthetic persona testing**. The counts below refer to **overlapping subsets** of those sessions, depending on KPI eligibility:
 
 - **Total synthetic sessions evaluated:** `6`
 - **Vague-intent sessions:** `2`
@@ -125,8 +125,8 @@ The current KPI snapshot is based on:
 | :--- | :--- | :--- | :--- | :--- |
 | **Proxy Pathway Clarification Rate** | **100%** | **2 of 2** | 2 vague-intent sessions | Indicates how often OBI-WAN helps narrow an initially vague request into a more concrete pathway |
 | **Actionable Recommendation Rate** | **75%** | **3 of 4** | 4 in-scope sessions | Indicates how often OBI-WAN ends with at least one grounded recommendation or clear next step |
-| **Time to First Actionable Recommendation** | **1.0 turns (median)** | N/A | 3 successful actionable sessions | Indicates how quickly OBI-WAN produces a grounded, useful next step |
-| **Hallucination-Free Recommendation Rate** | **100%** | **1 of 1** | 1 recommendation session | Indicates how often recommendation outputs remain fully traceable to structured data |
+| **Time to First Actionable Recommendation** | **1.0 turns (median)** | **3 sessions** | 3 successful actionable sessions | Indicates how quickly OBI-WAN produces a grounded, useful next step |
+| **Hallucination-Free Recommendation Rate** | **100%** | **1 of 1** | 1 recommendation session | Indicates how often recommendation outputs remain fully traceable to structured data and supporting text evidence |
 
 ## Interpretation
 These results suggest that, within the current synthetic evaluation sample, OBI-WAN is demonstrating:
